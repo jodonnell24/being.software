@@ -2,7 +2,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { errorHandler } from '$lib/errorHandler.js';
 	import Alert from './Alert.svelte';
-	import { theme as _theme } from '$lib/theme.js';
+	import { theme } from '$lib/theme.js';
 
 	let {
 		position = 'top-right', // 'top-right', 'top-left', 'bottom-right', 'bottom-left', 'top-center'

@@ -1,36 +1,40 @@
 <script>
 	import { SecurityUtils } from '$lib/secureForm.js';
-	import { theme as _theme } from '$lib/theme.js';
+	import { theme } from '$lib/theme.js';
 
-	export let field;
-	export let value = '';
-	export let error = '';
-	export let oninput = null;
-	export let onblur = null;
+	let {
+		field,
+		value = $bindable(''),
+		error = '',
+		oninput = null,
+		onblur = null
+	} = $props();
 
-	let showPassword = false;
-	let passwordStrength = { strength: 'empty', score: 0, feedback: '', meetsMinLength: false };
-	let showGenerator = false;
-	let pwnedStatus = { isPwned: false, breachCount: 0, checking: false };
+	let showPassword = $state(false);
+	let passwordStrength = $state({ strength: 'empty', score: 0, feedback: '', meetsMinLength: false });
+	let showGenerator = $state(false);
+	let pwnedStatus = $state({ isPwned: false, breachCount: 0, checking: false });
 	let strengthCheckTimeout;
 
 	// Update password strength when value changes
-	$: if (field.type === 'password' && value) {
-		passwordStrength = SecurityUtils.checkPasswordStrength(value);
+	$effect(() => {
+		if (field.type === 'password' && value) {
+			passwordStrength = SecurityUtils.checkPasswordStrength(value);
 
-		// Debounced pwned password check (avoid too many API calls)
-		clearTimeout(strengthCheckTimeout);
-		strengthCheckTimeout = setTimeout(async () => {
-			if (value && value.length >= 8) {
-				pwnedStatus.checking = true;
-				pwnedStatus = await SecurityUtils.checkPasswordPwned(value);
-				pwnedStatus.checking = false;
-			}
-		}, 1000);
-	} else {
-		passwordStrength = { strength: 'empty', score: 0, feedback: '', meetsMinLength: false };
-		pwnedStatus = { isPwned: false, breachCount: 0, checking: false };
-	}
+			// Debounced pwned password check (avoid too many API calls)
+			clearTimeout(strengthCheckTimeout);
+			strengthCheckTimeout = setTimeout(async () => {
+				if (value && value.length >= 8) {
+					pwnedStatus.checking = true;
+					pwnedStatus = await SecurityUtils.checkPasswordPwned(value);
+					pwnedStatus.checking = false;
+				}
+			}, 1000);
+		} else {
+			passwordStrength = { strength: 'empty', score: 0, feedback: '', meetsMinLength: false };
+			pwnedStatus = { isPwned: false, breachCount: 0, checking: false };
+		}
+	});
 
 	function togglePasswordVisibility() {
 		showPassword = !showPassword;

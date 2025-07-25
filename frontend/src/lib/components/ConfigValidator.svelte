@@ -1,18 +1,19 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
 	import Button from './Button.svelte';
 	import LoadingSpinner from './LoadingSpinner.svelte';
 	import Alert from './Alert.svelte';
 
-	export let appId = '';
-	export let configuration = {};
-	export let disabled = false;
+	let {
+		appId = '',
+		configuration = {},
+		disabled = false,
+		onvalidated = null,
+		onerror = null
+	} = $props();
 
-	const dispatch = createEventDispatcher();
-
-	let validating = false;
-	let validationResults = null;
-	let lastValidation = null;
+	let validating = $state(false);
+	let validationResults = $state(null);
+	let lastValidation = $state(null);
 
 	async function validateConfiguration() {
 		if (!appId || Object.keys(configuration).length === 0) {
@@ -38,17 +39,17 @@
 				throw new Error(`Validation failed: ${response.statusText}`);
 			}
 
-			const _result = await response.json();
+			const result = await response.json();
 			validationResults = result;
 			lastValidation = new Date();
 
-			dispatch('validated', {
+			onvalidated?.({
 				valid: result.valid,
 				results: result.results,
 				summary: result.summary
 			});
 		} catch (error) {
-			dispatch('error', { error: error.message });
+			onerror?.({ error: error.message });
 		} finally {
 			validating = false;
 		}
@@ -70,24 +71,26 @@
 
 	// Auto-validate when configuration changes
 	let validationTimeout;
-	$: if (appId && configuration && Object.keys(configuration).length > 0) {
-		// Clear previous timeout
-		if (validationTimeout) {
-			clearTimeout(validationTimeout);
-		}
+	$effect(() => {
+		if (appId && configuration && Object.keys(configuration).length > 0) {
+			// Clear previous timeout
+			if (validationTimeout) {
+				clearTimeout(validationTimeout);
+			}
 
-		// Debounce validation
-		validationTimeout = setTimeout(() => {
-			validateConfiguration();
-		}, 1000);
-	}
+			// Debounce validation
+			validationTimeout = setTimeout(() => {
+				validateConfiguration();
+			}, 1000);
+		}
+	});
 </script>
 
 <div class="config-validator">
 	<div class="flex items-center justify-between mb-4">
 		<h3 class="text-lg font-semibold text-gray-900">Configuration Validation</h3>
 		<Button
-			on:click={validateConfiguration}
+			onclick={validateConfiguration}
 			{disabled}
 			variant="secondary"
 			class="flex items-center gap-2"

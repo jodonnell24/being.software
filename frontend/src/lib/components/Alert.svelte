@@ -1,5 +1,5 @@
 <script>
-	import { theme as _theme, buildClassName } from '$lib/theme.js';
+	import { theme, buildClassName } from '$lib/theme.js';
 
 	let {
 		variant = 'info', // 'info', 'success', 'warning', 'error', 'security'
