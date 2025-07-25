@@ -3,16 +3,16 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches:
-      - main
-      - master
+    - main
+    - master
     paths:
-      - 'frontend/**'
+    - 'frontend/**'
   pull_request:
     branches:
-      - main
-      - master
+    - main
+    - master
     paths:
-      - 'frontend/**'
+    - 'frontend/**'
 
 jobs:
   deploy:
@@ -22,41 +22,41 @@ jobs:
         working-directory: ./frontend
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: frontend/package-lock.json
 
-      - name: Install dependencies
-        run: npm ci
+    - name: Install dependencies
+      run: npm ci
 
-      - name: Build
-        run: npm run build
+    - name: Build
+      run: npm run build
 
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: being-software
-          directory: frontend/build
-          # Optional: Use a custom domain
-          # gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Add deployment URL comment (on PRs)
-        if: github.event_name == 'pull_request'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const deploymentUrl = process.env.CLOUDFLARE_PAGES_URL || 'https://being-software.pages.dev';
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: ` **Preview deployment**: ${deploymentUrl}`
-            });
+    - name: Deploy to Cloudflare Pages
+      uses: cloudflare/pages-action@v1
+      with:
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        projectName: being-software
+        directory: frontend/build
+        # Optional: Use a custom domain
+        # gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Add deployment URL comment (on PRs)
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const deploymentUrl = process.env.CLOUDFLARE_PAGES_URL || 'https://being-software.pages.dev';
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: ` **Preview deployment**: ${deploymentUrl}`
+          });
