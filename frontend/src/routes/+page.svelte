@@ -52,7 +52,7 @@
 		emailError = '';
 		emailTouched = false;
 		isSubmitting = false;
-		alert("Thank you for your interest! We'll be in touch soon.");
+		alert("Thank you for your interest! This doesn't actually work yet");
 	}
 </script>
 
@@ -84,7 +84,7 @@
 					<div
 						class="inline-block bg-[var(--color-mantle)]/50 border border-[var(--color-surface0)] backdrop-blur-sm rounded-full px-4 py-1 text-sm text-[var(--color-text)] mb-4"
 					>
-						The Third Option is Here
+						still in early development, nothing on the platform is functional yet.
 					</div>
 
 					<h2
@@ -95,8 +95,7 @@
 
 					<p class="text-lg md:text-xl text-[var(--color-text)] max-w-2xl mx-auto mb-10">
 						You're trapped between the surveillance of Big Tech and the inconvenience of going
-						offline. We offer the convenience of the cloud with the privacy of self-hosting, made
-						radically simple.
+						offline. We offer the convenience of the cloud with the privacy of self-hosting.
 					</p>
 
 					<!-- Signup Form -->
@@ -148,7 +147,7 @@
 							</button>
 						</form>
 						<p class="text-xs text-[var(--color-subtext0)] mt-3">
-							Join the waitlist. No spam, ever.
+							this doesn't actually do anything yet, but it will soon!
 						</p>
 					</div>
 				</div>
@@ -288,10 +287,7 @@
 		overflow: hidden; /* This is crucial for the pseudo-element background */
 	}
 
-	/* This is the core of the "Vercel" background effect.
-    It's a large pseudo-element with a radial gradient.
-    We animate its position to create a slow, shifting aurora effect.
-  */
+
 	.background-gradient {
 		position: absolute;
 		top: 0;
@@ -302,7 +298,6 @@
 		/* subtle scanline effect */
 		background-color: var(--color-base);
 		/* This is the gradient that gives the theme hue */
-		/* Adjust the colors to match your theme */
 		background-image: linear-gradient(var(--color-surface0) 0%, transparent 50%);
 		/* This ensures the gradient is stretched across the entire background */
 		/* This creates the gradient effect */

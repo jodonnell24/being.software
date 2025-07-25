@@ -12,12 +12,12 @@ import {
 	Zap
 } from 'svelte-lucide';
 
-// This store will hold the state of your applications.
-// In the future, this could be populated by an API call to your Go backend.
+// This store holds the list of applications available in the platform.
+// In the future, the status of each application will be updated based on deployment state.
 export const applications = writable([
 	{
 		id: 'nextcloud',
-		name: 'Nextcloud Hub',
+		name: 'Nextcloud',
 		description: 'Replaces Google Drive, Calendar, and Contacts. Your complete data backend.',
 		icon: Cloud,
 		color: 'text-app-indigo',
@@ -26,7 +26,7 @@ export const applications = writable([
 	{
 		id: 'immich',
 		name: 'Immich',
-		description: 'Replaces Google Photos. High-performance photo and video backup from your phone.',
+		description: 'Replaces Google Photos. High-performance photo and video backups.',
 		icon: Image,
 		color: 'text-app-orange',
 		status: 'Not Deployed'
@@ -82,7 +82,7 @@ export const applications = writable([
 	{
 		id: 'gitea',
 		name: 'Gitea',
-		description: '(Pro Tier) Replaces GitHub. For developers who want to own their code.',
+		description: 'Replaces GitHub. For developers who want to own their code.',
 		icon: GitBranch,
 		color: 'text-app-green',
 		status: 'Not Deployed'
@@ -90,7 +90,7 @@ export const applications = writable([
 	{
 		id: 'n8n',
 		name: 'n8n',
-		description: '(Pro Tier) Replaces Zapier. Automate workflows between your different apps.',
+		description: 'Replaces Zapier. Automate workflows between your different apps.',
 		icon: Zap,
 		color: 'text-app-red',
 		status: 'Not Deployed'

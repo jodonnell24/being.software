@@ -60,7 +60,7 @@ export class ThemeValidator {
 
 		domain: (value, fieldName = 'Domain') => {
 			if (!value) return null;
-			// More flexible domain regex that allows single character domain parts and common TLDs
+			// Flexible domain regex that allows single character domain parts and common TLDs
 			const domainRegex =
 				/^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 			if (!domainRegex.test(value)) {
