@@ -11,11 +11,16 @@
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"format": "prettier --write .",
-		"format:check": "prettier --check ."
+		"format:check": "prettier --check .",
+		"deploy": "wrangler pages deploy",
+		"pages:deploy": "wrangler pages deploy",
+		"pages:dev": "wrangler pages dev",
+		"cf:login": "wrangler login"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.31.0",
 		"@sveltejs/adapter-auto": "^6.0.0",
+		"@sveltejs/adapter-cloudflare": "^7.1.1",
 		"@sveltejs/kit": "^2.16.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
 		"@tailwindcss/forms": "^0.5.9",
@@ -32,7 +37,8 @@
 		"svelte": "^5.0.0",
 		"svelte-lucide": "^2.0.1",
 		"tailwindcss": "^4.1.11",
-		"vite": "^6.2.6"
+		"vite": "^6.2.6",
+		"wrangler": "^4.26.0"
 	},
 	"dependencies": {
 		"@threlte/core": "^8.1.2",
