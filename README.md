@@ -77,6 +77,43 @@ Internet Users → Web Platform → Kubernetes Clusters
 
 This repository is for **developers and self-hosters**. Regular users should visit the live platform.
 
+### For Contributors
+```bash
+git clone https://github.com/yourusername/my-platform-ui.git
+cd my-platform-ui
+npm run setup     # One-time setup
+npm start         # Start developing
+```
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed development guide.
+
+### For Self-Hosters
+```bash
+# Quick deploy with Docker
+curl -O https://raw.githubusercontent.com/yourusername/my-platform-ui/main/docker-compose.yml
+curl -O https://raw.githubusercontent.com/yourusername/my-platform-ui/main/.env.example
+mv .env.example .env
+# Edit .env with your settings
+docker compose up -d
+```
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for full deployment guide.
+
+---
+
+## 📋 Development Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm start` | Start both frontend and backend |
+| `npm run setup` | One-time development environment setup |
+| `npm test` | Run all tests |
+| `npm run build` | Build for production |
+| `npm run dev:docker` | Start with Docker (includes database) |
+| `npm run k3d:create` | Create local Kubernetes cluster |
+
+## 🛠️ Tech Stack
+
 ## �️ Tech Stack
 
 ### Frontend
