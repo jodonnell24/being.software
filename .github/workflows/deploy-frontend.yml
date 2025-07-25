@@ -56,6 +56,27 @@ jobs:
         ls -la
         echo "Checking .svelte-kit/cloudflare directory..."
         ls -la .svelte-kit/cloudflare/ || echo "Cloudflare directory not found"
+        echo "Verifying _routes.json file..."
+        cat .svelte-kit/cloudflare/_routes.json || echo "_routes.json not found"
+        echo "Verifying _worker.js file..."
+        ls -la .svelte-kit/cloudflare/_worker.js || echo "_worker.js not found"
+
+    - name: Verify build output
+      working-directory: ./frontend
+      run: |
+        if [ ! -d ".svelte-kit/cloudflare" ]; then
+          echo "❌ Build output directory not found!"
+          exit 1
+        fi
+        if [ ! -f ".svelte-kit/cloudflare/_worker.js" ]; then
+          echo "❌ Worker file not found!"
+          exit 1
+        fi
+        if [ ! -f ".svelte-kit/cloudflare/_routes.json" ]; then
+          echo "❌ Routes file not found!"
+          exit 1
+        fi
+        echo "✅ All required build files are present"
 
     - name: Deploy to Cloudflare Pages
       uses: cloudflare/pages-action@v1
@@ -64,5 +85,5 @@ jobs:
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         projectName: being-software
         directory: ./frontend/.svelte-kit/cloudflare
-        gitHubToken: ${{ secrets.TOKEN }}
-        wranglerVersion: '3.78.12'
+        gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        wranglerVersion: '3.80.0'
