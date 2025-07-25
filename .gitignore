@@ -11,10 +11,14 @@ pnpm-debug.log*
 .pnpm-debug.log*
 
 # Build outputs
-.svelte-kit/
 build/
 dist/
-.output/
+*/output/
+
+# SvelteKit
+.svelte-kit/
+*.svelte-kit/
+
 
 # Package managers
 .yarn/
