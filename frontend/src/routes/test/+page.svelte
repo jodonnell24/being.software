@@ -1,9 +1,16 @@
 <script>
+	import { dev } from '$app/environment';
+	import { goto } from '$app/navigation';
 	import ConfigValidator from '$lib/components/ConfigValidator.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import { deploymentForms } from '$lib/deploymentForms.js';
 	import { deployApplication } from '$lib/api.js';
 	import { Book, Zap, Shield, Globe, Terminal, FileText } from 'svelte-lucide';
+
+	// Redirect to home if not in development mode
+	if (!dev) {
+		goto('/');
+	}
 
 	let selectedApp = $state('wordpress');
 	let testConfiguration = $state({});
@@ -126,7 +133,7 @@
 	async function testConnectivity() {
 		try {
 			logToDebug('Testing backend connectivity...');
-			const _result = await deployApplication('test', { test: 'connectivity_check' });
+			const result = await deployApplication('test', { test: 'connectivity_check' });
 			logToDebug('Connectivity test result', result);
 		} catch (error) {
 			logToDebug('Connectivity test failed', {
@@ -153,7 +160,7 @@
 			logToDebug('Test configuration', testConfiguration);
 
 			logToDebug('Calling deployApplication...');
-			const _result = await deployApplication(selectedApp, testConfiguration);
+			const result = await deployApplication(selectedApp, testConfiguration);
 
 			logToDebug('Test deployment successful', result);
 		} catch (error) {
