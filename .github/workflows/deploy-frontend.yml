@@ -18,7 +18,7 @@ on:
 
 
 env:
-  NODE_VERSION: '18'
+  NODE_VERSION: '20'
 
 jobs:
   deploy-to-cloudflare:
@@ -45,7 +45,13 @@ jobs:
 
     - name: Build for Cloudflare
       working-directory: ./frontend
-      run: npm run build
+      env:
+        NODE_OPTIONS: "--max-old-space-size=4096"
+        DISABLE_V8_COMPILE_CACHE: "1"
+        FORCE_COLOR: "0"
+      run: |
+        echo "Starting build process..."
+        npm run build
 
     - name: Deploy to Cloudflare Pages
       uses: cloudflare/pages-action@v1
@@ -55,4 +61,4 @@ jobs:
         projectName: being-software
         directory: ./frontend/build
         gitHubToken: ${{ secrets.TOKEN }}
-        wranglerVersion: '3'
+        wranglerVersion: '3.57.2'
