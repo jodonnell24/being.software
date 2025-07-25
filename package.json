@@ -1,29 +1,60 @@
 {
   "name": "my-platform",
   "version": "1.0.0",
-  "description": "Full-stack platform with SvelteKit frontend and Go backend",
+  "description": "A modern, secure web application for deploying and managing self-hosted applications. Built with SvelteKit frontend and Go backend.",
   "private": true,
   "workspaces": [
     "frontend"
   ],
   "scripts": {
+    "start": "npm run dev",
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:frontend": "cd frontend && npm run dev",
     "dev:backend": "cd backend && go run main.go",
+    "dev:docker": "docker-compose -f docker-compose.dev.yml up --build",
+    "dev:docker:bg": "docker-compose -f docker-compose.dev.yml up -d --build",
+    "dev:stop": "docker-compose -f docker-compose.dev.yml down",
+    "dev:logs": "docker-compose -f docker-compose.dev.yml logs -f",
+    "dev:clean": "docker-compose -f docker-compose.dev.yml down -v && docker system prune -f",
+    "setup": "./scripts/setup-dev.sh",
     "build": "npm run build:frontend && npm run build:backend",
     "build:frontend": "cd frontend && npm run build",
     "build:backend": "cd backend && go build -o app main.go",
+    "build:docker": "docker build -t my-platform:latest .",
     "test": "npm run test:frontend && npm run test:backend",
     "test:frontend": "cd frontend && npm test",
     "test:backend": "cd backend && go test ./...",
     "lint": "npm run lint:frontend && npm run lint:backend",
     "lint:frontend": "cd frontend && npm run lint",
-    "lint:backend": "cd backend && golangci-lint run"
+    "lint:backend": "cd backend && golangci-lint run",
+    "lint:fix": "npm run lint:frontend -- --fix && cd backend && golangci-lint run --fix",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && go mod download",
+    "clean": "rm -rf node_modules frontend/node_modules backend/app && cd backend && go clean -cache",
+    "k3d:create": "k3d cluster create my-platform-dev --port '8080:30080@loadbalancer' --port '8443:30443@loadbalancer' --agents 1 && k3d kubeconfig merge my-platform-dev --kubeconfig-switch-context",
+    "k3d:delete": "k3d cluster delete my-platform-dev",
+    "k3d:status": "k3d cluster list && kubectl get nodes"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
   },
   "engines": {
-    "node": ">=18.0.0"
-  }
+    "node": ">=18.0.0",
+    "go": ">=1.21.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/my-platform-ui.git"
+  },
+  "keywords": [
+    "kubernetes",
+    "deployment",
+    "self-hosted",
+    "webapp",
+    "platform",
+    "svelte",
+    "go",
+    "docker"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
 }

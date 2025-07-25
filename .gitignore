@@ -177,6 +177,8 @@ Desktop.ini
 
 # Linux
 *~
+*.sh
+*.env*
 
 # ====================
 # SECURITY & SECRETS
@@ -214,6 +216,7 @@ credentials.json
 # ====================
 
 # Docker
+
 .dockerignore
 docker-compose.override.yml
 
