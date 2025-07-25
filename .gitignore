@@ -26,6 +26,18 @@ public/build/
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
+# Build tools and bundlers
+webpack.config.*
+rollup.config.*
+parcel-cache/
+.parcel-cache/
+turbo.json
+.turbo/
+.nx/
+nx.json
+esbuild.config.*
+.esbuild/
+
 # Tailwind CSS
 # (generated files are typically in build/ or dist/ already)
 
@@ -96,10 +108,29 @@ coverage/
 .eslintcache
 .stylelintcache
 .prettierignore
-.prettierrc
-.prettierignore.json
-.prettier.config.js
-.prettier.config.cjs
+.prettierrc*
+prettier.config.*
+.prettier.config.*
+eslint.config.*
+.eslintrc*
+.stylelintrc*
+stylelint.config.*
+.editorconfig
+.markdownlint*
+markdownlint.config.*
+.jshintrc
+.jscsrc
+.jsbeautifyrc
+.jslint*
+biome.json*
+.biome.*
+.swcrc
+.babelrc*
+babel.config.*
+.browserslistrc
+browserslist
+tsconfig*.json
+jsconfig*.json
 
 # IDE and editors
 .vscode/
@@ -109,6 +140,24 @@ coverage/
 *.swo
 *~
 .history/
+.fleet/
+.nova/
+
+# Development tools and their configs
+.husky/
+.commitlintrc*
+commitlint.config.*
+.gitmessage
+.gitkeep
+.lefthook*
+lint-staged.config.*
+.lintstagedrc*
+.release-it.*
+.semantic-release*
+.czrc
+.cz-config.js
+.versionrc*
+.standard-version*
 
 # ====================
 # SYSTEM FILES
