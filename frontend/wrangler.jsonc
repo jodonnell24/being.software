@@ -1,4 +1,5 @@
 {
 	"name": "being-software",
-	"compatibility_date": "2025-07-25"
+	"compatibility_date": "2025-01-01",
+	"compatibility_flags": ["nodejs_compat"]
 }
