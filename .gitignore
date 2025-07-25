@@ -25,6 +25,10 @@ jspm_packages/
 # GO BACKEND
 # ====================
 
+eslint.*
+.prettierrc
+.prettierignore
+
 # Go binaries
 *.exe
 *.dll
@@ -52,7 +56,8 @@ tmp/
 # ====================
 
 # Environment variables
-.env
+.env.*
+.env*
 .env.local
 .env.*.local
 .envrc
@@ -103,9 +108,9 @@ credentials.json
 # ====================
 # DOCKER & DEPLOYMENT
 # ====================
-Dockerfile.*
+Dockerfile*
+.air.toml
 docker-compose.yml
-
 
 
 # Local docker overrides
@@ -123,8 +128,11 @@ TODO.md
 my-*
 dev-*
 personal-*
-.personal/
+.personal/*
 .env.*
+*.sh
+/.scripts/
+
 
 # Personal documentation
 THEMING.md
