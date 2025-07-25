@@ -68,8 +68,8 @@ tmp/
 .air.toml
 
 # Project-specific Go binaries
-go-back/main
-go-back/app
+backend/main
+backend/app
 /main
 /app
 

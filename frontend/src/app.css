@@ -1,0 +1,260 @@
+@import 'tailwindcss';
+@theme {
+	/* Catppuccin Mocha Base Colors */
+	--color-overlay: #1e1e2e;
+	--color-base: #1e1e2e;
+	--color-mantle: #181825;
+	--color-crust: #11111b;
+	--color-text: #cdd6f4;
+	--color-subtext0: #a6adc8;
+	--color-subtext1: #bac2de;
+	--color-overlay0: #6c7086;
+	--color-overlay1: #7f849c;
+	--color-overlay2: #9399b2;
+	--color-surface0: #313244;
+	--color-surface1: #45475a;
+	--color-surface2: #585b70;
+
+	/* Catppuccin Mocha Accent Colors */
+	--color-blue: #89b4fa;
+	--color-lavender: #b4befe;
+	--color-pink: #f5c2e7;
+	--color-mauve: #cba6f7;
+	--color-red: #f38ba8;
+	--color-maroon: #eba0ac;
+	--color-peach: #fab387;
+	--color-yellow: #f9e2af;
+	--color-green: #a6e3a1;
+	--color-teal: #94e2d5;
+	--color-sky: #89dceb;
+	--color-sapphire: #74c7ec;
+	--color-rosewater: #f5e0dc;
+	--color-flamingo: #f2cdcd;
+
+	/* Custom cyberpunk accents */
+	--color-cyan: #00ffff;
+	--color-neon-pink: #ff10f0;
+	--color-neon-green: #39ff14;
+	--color-electric-blue: #0066ff;
+
+	/* Legacy mappings for compatibility */
+	--color-orange: #fab387;
+	--color-purple: #cba6f7;
+	--color-indigo: #89b4fa;
+	--color-foam: #94e2d5;
+	--color-iris: #cba6f7;
+	--color-jade: #a6e3a1;
+	--color-mint: #94e2d5;
+	--color-gray: #6c7086;
+
+	--text-app-blue: #89b4fa;
+	--text-app-lavender: #b4befe;
+	--text-app-pink: #f5c2e7;
+	--text-app-mauve: #cba6f7;
+	--text-app-red: #f38ba8;
+	--text-app-maroon: #eba0ac;
+	--text-app-peach: #fab387;
+	--text-app-yellow: #f9e2af;
+	--text-app-green: #a6e3a1;
+	--text-app-teal: #94e2d5;
+	--text-app-sky: #89dceb;
+	--text-app-sapphire: #74c7ec;
+	--text-app-rosewater: #f5e0dc;
+	--text-app-flamingo: #f2cdcd;
+	--text-app-orange: #fab387;
+	--text-app-purple: #cba6f7;
+	--text-app-indigo: #89b4fa;
+	--text-app-foam: #94e2d5;
+	--text-app-iris: #cba6f7;
+	--text-app-jade: #a6e3a1;
+	--text-app-mint: #94e2d5;
+	--text-app-gray: #6c7086;
+}
+
+/* Global Styles */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family:
+		'Inter',
+		-apple-system,
+		BlinkMacSystemFont,
+		sans-serif;
+	background: var(--color-base);
+	min-height: 100vh;
+	position: relative;
+	overflow-x: hidden;
+}
+
+/* Subtle grid background */
+body::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image:
+		linear-gradient(rgba(137, 180, 250, 0.03) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(137, 180, 250, 0.03) 1px, transparent 1px);
+	background-size: 60px 60px;
+	pointer-events: none;
+	z-index: -1;
+}
+
+/* Simplified glassmorphism utility classes */
+.glass {
+	background: rgba(30, 30, 46, 0.05);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border: 1px solid rgba(205, 214, 244, 0.1);
+}
+
+.glass-card {
+	background: rgba(30, 30, 46, 0.05);
+	backdrop-filter: blur(15px);
+	-webkit-backdrop-filter: blur(15px);
+	border: 1px solid rgba(205, 214, 244, 0.15);
+	box-shadow:
+		0 8px 32px rgba(0, 0, 0, 0.3),
+		inset 0 1px 0 rgba(205, 214, 244, 0.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--color-surface0);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--color-surface2);
+	border-radius: 4px;
+	border: 1px solid var(--color-surface1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--color-blue);
+}
+
+.h1 {
+	font-family: 'VT323', monospace;
+}
+
+/* Focus rings */
+.focus-ring:focus {
+	outline: none;
+	box-shadow:
+		0 0 0 2px var(--color-base),
+		0 0 0 4px var(--color-blue);
+}
+
+.filter {
+	backdrop-filter: blur(4px);
+	backdrop-filter: brightness(0.82);
+}
+
+.aside {
+	background: var(--color-mantle);
+	border-right: 1px solid var(--color-surface1);
+	padding: 1rem;
+	transition: width 0.3s ease;
+}
+
+.text-app-blue {
+	color: #89b4fa !important;
+}
+.text-app-indigo {
+	color: #89b4fa !important;
+}
+.text-app-lavender {
+	color: #b4befe !important;
+}
+.text-app-mauve {
+	color: #cba6f7 !important;
+}
+.text-app-yellow {
+	color: #f9e2af !important;
+}
+.text-app-orange {
+	color: #fab387 !important;
+}
+.text-app-pink {
+	color: #f5c2e7 !important;
+}
+.text-app-green {
+	color: #a6e3a1 !important;
+}
+.text-app-teal {
+	color: #94e2d5 !important;
+}
+.text-app-sky {
+	color: #89dceb !important;
+}
+.text-app-sapphire {
+	color: #74c7ec !important;
+}
+.text-app-red {
+	color: #f38ba8 !important;
+}
+.text-app-gray {
+	color: #9399b2 !important;
+}
+
+/* Browser autocomplete styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px var(--color-surface1) inset !important;
+	-webkit-text-fill-color: var(--color-text) !important;
+	caret-color: var(--color-text) !important;
+	border-color: var(--color-surface2) !important;
+	transition: background-color 5000s ease-in-out 0s !important;
+}
+
+/* Force dark theme for autofill in WebKit browsers */
+input:-webkit-autofill::first-line {
+	color: var(--color-text) !important;
+	font-family: inherit !important;
+}
+
+/* Firefox autocomplete styling */
+input:-moz-autofill,
+input:-moz-autofill:hover,
+input:-moz-autofill:focus {
+	background-color: var(--color-surface1) !important;
+	color: var(--color-text) !important;
+	border-color: var(--color-surface2) !important;
+	-moz-text-fill-color: var(--color-text) !important;
+}
+
+/* Autocomplete dropdown suggestions styling */
+input::-webkit-list-button {
+	display: none;
+}
+
+input::-webkit-calendar-picker-indicator {
+	filter: invert(1);
+	opacity: 0.5;
+}
+
+input::-webkit-calendar-picker-indicator:hover {
+	opacity: 1;
+}
+
+/* Override browser default autocomplete styles */
+input[autocomplete] {
+	background-color: var(--color-surface1) !important;
+}
+
+/* WebKit datalist option styling */
+option {
+	background-color: var(--color-surface1) !important;
+	color: var(--color-text) !important;
+}

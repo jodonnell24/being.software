@@ -1,0 +1,41 @@
+{
+	"name": "catppu",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"format": "prettier --write .",
+		"format:check": "prettier --check ."
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.31.0",
+		"@sveltejs/adapter-auto": "^6.0.0",
+		"@sveltejs/kit": "^2.16.0",
+		"@sveltejs/vite-plugin-svelte": "^5.0.0",
+		"@tailwindcss/forms": "^0.5.9",
+		"@tailwindcss/typography": "^0.5.15",
+		"@tailwindcss/vite": "^4.1.11",
+		"autoprefixer": "^10.4.21",
+		"eslint": "^9.31.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.11.0",
+		"glob": "^11.0.3",
+		"globals": "^16.3.0",
+		"prettier": "^3.6.2",
+		"prettier-plugin-svelte": "^3.4.0",
+		"svelte": "^5.0.0",
+		"svelte-lucide": "^2.0.1",
+		"tailwindcss": "^4.1.11",
+		"vite": "^6.2.6"
+	},
+	"dependencies": {
+		"@threlte/core": "^8.1.2",
+		"zxcvbn": "^4.4.2"
+	}
+}
