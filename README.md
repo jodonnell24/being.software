@@ -1,70 +1,81 @@
 # My Platform UI
 
-A modern, secure web application for deploying and managing self-hosted applications. Built with SvelteKit frontend and Go backend.
+A Platform-as-a-Service (PaaS) for deploying and managing self-hosted applications on Kubernetes. Built with SvelteKit frontend and Go backend.
 
 ![Platform UI](https://img.shields.io/badge/SvelteKit-5.0-orange)
 ![Go](https://img.shields.io/badge/Go-1.21+-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-## ✨ Features
+## ✨ What is My Platform?
 
-- **🚀 Easy Deployment**: One-click deployment of popular self-hosted applications
-- **🔒 Security First**: Client-side encryption for sensitive data
-- **🎨 Modern UI**: Beautiful, responsive interface built with SvelteKit 5
-- **⚡ Fast**: Optimized for performance with Vite and modern JavaScript
-- **🛡️ Secure Forms**: Advanced password validation and breach detection
-- **📱 Mobile Friendly**: Responsive design that works on all devices
+My Platform is a web-based PaaS that allows users to:
+- **🚀 Deploy applications** to their Kubernetes clusters with one click
+- **🔒 Manage secrets** securely with client-side encryption
+- **📊 Monitor deployments** with real-time status updates
+- **⚙️ Configure services** through an intuitive web interface
 
-## 🏗️ Architecture
+**Users access the platform at: [https://your-platform-url.com](https://your-platform-url.com)**
+
+## 🎯 For Different Audiences
+
+### 🌐 **Platform Users**
+Visit the live platform at [your-platform-url.com](https://your-platform-url.com) to:
+- Connect your Kubernetes cluster
+- Deploy applications from our catalog
+- Manage your deployments
+
+### 🏠 **Self-Hosters**
+Want to run your own instance? See [DEPLOYMENT.md](DEPLOYMENT.md) for:
+- Docker deployment
+- Kubernetes deployment
+- Configuration options
+
+### 🤝 **Contributors**
+Want to help develop the platform? See [CONTRIBUTING.md](CONTRIBUTING.md) for:
+- Development setup
+- Architecture overview
+- Contribution guidelines
+
+## 🏗️ Platform Architecture
 
 ```
-my-platform/
-├── frontend/          # SvelteKit 5 application
-│   ├── src/
-│   │   ├── lib/       # Reusable components and utilities
-│   │   ├── routes/    # Application pages and API endpoints
-│   │   └── app.html   # App shell
-├── backend/           # Go REST API server
-│   ├── api/           # HTTP handlers and routing
-│   ├── store/         # Database layer
-│   └── main.go        # Application entry point
-└── docker/            # Container configurations
+Internet Users → Web Platform → Kubernetes Clusters
+     ↓              ↓              ↓
+   Browser    →  SvelteKit UI  →  User's K8s
+     ↓              ↓              ↓
+ Platform UI   →   Go API     →  Deployments
 ```
 
-## 🚀 Quick Start
+**Components:**
+- **Frontend**: SvelteKit 5 web application
+- **Backend**: Go REST API server
+- **Target**: User's Kubernetes clusters (connected via kubeconfig)
 
-### Prerequisites
+## �️ Technology Stack
 
-- **Node.js** 18+ 
-- **Go** 1.21+
-- **Docker** (optional)
+### Frontend
+- **[SvelteKit](https://kit.svelte.dev/)** - Full-stack web framework
+- **[Svelte 5](https://svelte.dev/)** - Component framework with runes
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first styling
+- **[Vite](https://vitejs.dev/)** - Build tool and dev server
 
-### Development Setup
+### Backend  
+- **[Go](https://golang.org/)** - High-performance server language
+- **[Chi Router](https://github.com/go-chi/chi)** - HTTP router and middleware
+- **[Kubernetes Client](https://github.com/kubernetes/client-go)** - K8s API integration
+- **RESTful API** - Clean API design
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/yourusername/my-platform-ui.git
-   cd my-platform-ui
-   ```
+### Security & Operations
+- **Client-side Encryption** - AES-256-GCM for sensitive data
+- **Kubernetes RBAC** - Secure cluster access
+- **Docker** - Containerized deployment
+- **CI/CD Ready** - GitHub Actions workflows
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   cd frontend && npm install && cd ..
-   ```
+---
 
-3. **Start development servers:**
-   ```bash
-   # Start both frontend and backend
-   npm run dev
-   
-   # Or start individually:
-   npm run dev:frontend  # http://localhost:5173
-   npm run dev:backend   # http://localhost:8080
-   ```
+## 🔨 Development & Deployment
 
-4. **Open your browser:**
-   Navigate to [http://localhost:5173](http://localhost:5173)
+This repository is for **developers and self-hosters**. Regular users should visit the live platform.
 
 ## �️ Tech Stack
 
