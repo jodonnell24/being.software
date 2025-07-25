@@ -1,5 +1,9 @@
 // API utility for backend calls
-const API_BASE_URL = 'http://localhost:8081';
+import { dev } from '$app/environment';
+
+const API_BASE_URL = dev 
+	? 'http://localhost:8081' 
+	: (import.meta.env.VITE_API_URL || '/api');
 
 // Security headers for all requests
 const getSecureHeaders = () => ({

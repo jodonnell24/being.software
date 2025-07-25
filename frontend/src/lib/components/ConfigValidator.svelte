@@ -1,4 +1,5 @@
 <script>
+	import { dev } from '$app/environment';
 	import Button from './Button.svelte';
 	import LoadingSpinner from './LoadingSpinner.svelte';
 	import Alert from './Alert.svelte';
@@ -15,6 +16,10 @@
 	let validationResults = $state(null);
 	let lastValidation = $state(null);
 
+	const API_BASE_URL = dev 
+		? 'http://localhost:8081' 
+		: (import.meta.env.VITE_API_URL || '/api');
+
 	async function validateConfiguration() {
 		if (!appId || Object.keys(configuration).length === 0) {
 			return;
@@ -24,7 +29,7 @@
 		validationResults = null;
 
 		try {
-			const response = await fetch('http://localhost:8081/api/validate', {
+			const response = await fetch(`${API_BASE_URL}/api/validate`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
