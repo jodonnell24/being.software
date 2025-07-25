@@ -1,0 +1,45 @@
+# Git and docs
+.git
+.gitignore
+*.md
+!README.md
+
+# Dependencies and build outputs
+node_modules
+dist/
+build/
+.svelte-kit/
+tmp/
+
+# Environment files (keep .env.example)
+.env
+.env.local
+.env.*.local
+
+# Development tools
+.vscode
+.idea
+*.swp
+*.swo
+.air.toml
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Development-only files
+Dockerfile.dev
+docker-compose.dev.yml
+scripts/setup-dev.sh
+
+# CI/CD
+.github/
+
+# Personal dev files
+*.notes
+NOTES.md
+TODO.md

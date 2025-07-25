@@ -8,43 +8,17 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-pnpm-lock.yaml
 .pnpm-debug.log*
 
-# SvelteKit specific
+# Build outputs
 .svelte-kit/
 build/
-.output/
-
-# Build outputs and deployment
 dist/
-public/build/
-.vercel/
-.netlify/
-
-# Vite
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
-
-# Build tools and bundlers
-webpack.config.*
-rollup.config.*
-parcel-cache/
-.parcel-cache/
-turbo.json
-.turbo/
-.nx/
-nx.json
-esbuild.config.*
-.esbuild/
-
-# Tailwind CSS
-# (generated files are typically in build/ or dist/ already)
+.output/
 
 # Package managers
 .yarn/
 .pnp.*
-.yarn-integrity
 jspm_packages/
 
 # ====================
@@ -53,84 +27,35 @@ jspm_packages/
 
 # Go binaries
 *.exe
-*.exe~
 *.dll
 *.so
 *.dylib
-
-# Go test binaries
 *.test
-
-# Go coverage output
 *.out
-coverage.txt
 
-# Go workspace file
+# Go workspace and vendor
 go.work
 go.work.sum
-
-# Vendor directory (if using vendoring)
 vendor/
 
-# Go build cache
-.cache/
-
-# Air live reload tool
-tmp/
-.air.toml
-
-# Project-specific Go binaries
+# Project binaries
 backend/main
 backend/app
 /main
 /app
 
+# Air live reload
+tmp/
+
 # ====================
-# DEVELOPMENT TOOLS
+# DEVELOPMENT & CONFIG
 # ====================
 
-# Environment variables
+# Environment variables (keep .env.example)
 .env
-.env.*
-!.env.example
+.env.local
+.env.*.local
 .envrc
-
-# Logs
-logs/
-*.log
-
-# Testing and coverage
-coverage/
-*.lcov
-.nyc_output/
-
-# Linting and formatting
-.eslintcache
-.stylelintcache
-.prettierignore
-.prettierrc*
-prettier.config.*
-.prettier.config.*
-eslint.config.*
-.eslintrc*
-.stylelintrc*
-stylelint.config.*
-.editorconfig
-.markdownlint*
-markdownlint.config.*
-.jshintrc
-.jscsrc
-.jsbeautifyrc
-.jslint*
-biome.json*
-.biome.*
-.swcrc
-.babelrc*
-babel.config.*
-.browserslistrc
-browserslist
-tsconfig*.json
-jsconfig*.json
 
 # IDE and editors
 .vscode/
@@ -139,25 +64,14 @@ jsconfig*.json
 *.swp
 *.swo
 *~
-.history/
-.fleet/
-.nova/
 
-# Development tools and their configs
-.husky/
-.commitlintrc*
-commitlint.config.*
-.gitmessage
-.gitkeep
-.lefthook*
-lint-staged.config.*
-.lintstagedrc*
-.release-it.*
-.semantic-release*
-.czrc
-.cz-config.js
-.versionrc*
-.standard-version*
+# Logs
+logs/
+*.log
+
+# Testing and coverage
+coverage/
+*.lcov
 
 # ====================
 # SYSTEM FILES
@@ -165,112 +79,53 @@ lint-staged.config.*
 
 # macOS
 .DS_Store
-.DS_Store?
 ._*
-.Spotlight-V100
-.Trashes
 
 # Windows
 Thumbs.db
-ehthumbs.db
 Desktop.ini
-
-# Linux
-*~
-*.sh
-*.env*
 
 # ====================
 # SECURITY & SECRETS
 # ====================
 
-# Certificates and keys
+# Keys and certificates
 *.key
 *.pem
-*.p12
-*.pfx
 *.crt
 *.cer
-*.der
-*.csr
 
-# Configuration files with secrets
-config.json
-config.yaml
-config.yml
+# Secret configs
 secrets.json
 credentials.json
 .secrets/
 
 # ====================
-# DATABASE
-# ====================
-
-# SQLite databases
-*.db
-*.sqlite
-*.sqlite3
-
-# ====================
 # DOCKER & DEPLOYMENT
 # ====================
 
-# Docker
-
-.dockerignore
+# Local docker overrides
 docker-compose.override.yml
 
-# Deployment artifacts
-deploy-key*
-deployment-config*
-
 # ====================
-# TEMPORARY & BACKUP
+# PERSONAL DEV FILES
 # ====================
 
-# Temporary files
-tmp/
-temp/
-*.tmp
-*.temp
+# Your personal development files
+*.notes
+*.todo
+NOTES.md
+TODO.md
+my-*
+dev-*
+personal-*
+.personal/
 
-# Backup files
-*.bak
-*.backup
-*.old
-*.orig
-*.rej
-
-# Runtime data
-pids/
-*.pid
-*.seed
-*.pid.lock
-
-# ====================
-# PROJECT SPECIFIC
-# ====================
-
-# Application data
-uploads/
-storage/
-data/
-
-# Local override files
-*.local
-*.local.*
-override.*
-
-# Personal documentation (keep README.md)
+# Personal documentation
 THEMING.md
 SECURITY.md
 ENCRYPTION_GUIDE.md
 HOW_TO_USE_ENCRYPTION.md
 LINTING_GUIDE.md
-*.notes
-*.todo
-NOTES.md
-TODO.md
-DEVELOPMENT.md
-ARCHITECTURE.md
+REPO_STRUCTURE.md
 
