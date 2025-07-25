@@ -51,7 +51,7 @@ tmp/
 # DEVELOPMENT & CONFIG
 # ====================
 
-# Environment variables (keep .env.example)
+# Environment variables
 .env
 .env.local
 .env.*.local
@@ -103,6 +103,10 @@ credentials.json
 # ====================
 # DOCKER & DEPLOYMENT
 # ====================
+Dockerfile.*
+docker-compose.yml
+
+
 
 # Local docker overrides
 docker-compose.override.yml
@@ -120,6 +124,7 @@ my-*
 dev-*
 personal-*
 .personal/
+.env.*
 
 # Personal documentation
 THEMING.md
@@ -128,4 +133,7 @@ ENCRYPTION_GUIDE.md
 HOW_TO_USE_ENCRYPTION.md
 LINTING_GUIDE.md
 REPO_STRUCTURE.md
+DEVELOPMENT.md
+
+# ====================
 
