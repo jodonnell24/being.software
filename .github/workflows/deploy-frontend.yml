@@ -1,0 +1,58 @@
+name: Deploy Frontend to Cloudflare
+
+on:
+  push:
+    branches:
+    - master
+    - main
+    paths:
+    - 'frontend/**'
+    - '.github/workflows/deploy-frontend.yml'
+  pull_request:
+    branches:
+    - master
+    - main
+    paths:
+    - 'frontend/**'
+  workflow_dispatch:
+
+
+env:
+  NODE_VERSION: '18'
+
+jobs:
+  deploy-to-cloudflare:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        cache-dependency-path: frontend/package-lock.json
+
+    - name: Install dependencies
+      working-directory: ./frontend
+      run: npm ci
+
+    - name: Build for Cloudflare
+      working-directory: ./frontend
+      run: npm run build
+
+    - name: Deploy to Cloudflare Pages
+      uses: cloudflare/pages-action@v1
+      with:
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        projectName: being-software
+        directory: ./frontend/build
+        gitHubToken: ${{ secrets.TOKEN }}
+        wranglerVersion: '3'
