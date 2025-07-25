@@ -18,7 +18,7 @@ my-platform/
 ### Prerequisites
 - Node.js 18+
 - Go 1.21+
-- Docker & Docker Compose (optional)
+- Docker (optional - for containerized development)
 
 ### Development Setup
 
@@ -38,9 +38,6 @@ my-platform/
    # Option 2: Run individually
    npm run dev:frontend  # Frontend on http://localhost:5173
    npm run dev:backend   # Backend on http://localhost:8080
-   
-   # Option 3: Use Docker
-   docker-compose up
    ```
 
 ## 📁 Project Structure
@@ -71,7 +68,6 @@ my-platform/
 | `npm run build` | Build both applications |
 | `npm run test` | Run all tests |
 | `npm run lint` | Lint all code |
-| `npm run docker:up` | Start with Docker Compose |
 
 ## 🚀 Deployment
 
