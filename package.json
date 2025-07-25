@@ -18,10 +18,7 @@
     "test:backend": "cd backend && go test ./...",
     "lint": "npm run lint:frontend && npm run lint:backend",
     "lint:frontend": "cd frontend && npm run lint",
-    "lint:backend": "cd backend && golangci-lint run",
-    "docker:build": "docker-compose build",
-    "docker:up": "docker-compose up",
-    "docker:down": "docker-compose down"
+    "lint:backend": "cd backend && golangci-lint run"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

@@ -95,6 +95,11 @@ coverage/
 # Linting and formatting
 .eslintcache
 .stylelintcache
+.prettierignore
+.prettierrc
+.prettierignore.json
+.prettier.config.js
+.prettier.config.cjs
 
 # IDE and editors
 .vscode/
