@@ -1,11 +1,4 @@
 {
 	"name": "being-software",
-	"compatibility_date": "2025-07-25",
-	"assets": {
-		"directory": "./build/client"
-	},
-	"build": {
-		"command": "npm run build"
-	},
-	"pages_build_output_dir": "./build"
+	"compatibility_date": "2025-07-25"
 }
