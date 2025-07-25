@@ -1,6 +1,6 @@
 /**
  * Centralized theme configuration for consistent styling across the application
- * Based on Catppuccin Mocha with cyberpunk accents
+ * Based on Catppuccin Mocha
  */
 
 export const theme = {

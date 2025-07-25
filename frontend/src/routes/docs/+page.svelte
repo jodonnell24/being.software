@@ -11,7 +11,7 @@
 		LifeBuoy
 	} from 'svelte-lucide';
 
-	const sections = [
+	let sections = $state([
 		{
 			id: 'getting-started',
 			title: 'Getting Started',
@@ -51,18 +51,18 @@
 			icon: Terminal,
 			color: 'pink',
 			items: [
-				{ title: 'REST API', description: 'Complete REST API documentation' },
-				{ title: 'SDKs', description: 'Official software development kits' },
+				{ title: 'REST API', description: 'REST API documentation' },
+				{ title: 'Dashboards', description: 'Monitor and manage your applications' },
 				{ title: 'Webhooks', description: 'Real-time event notifications' }
 			]
 		}
-	];
+	]);
 
-	const quickLinks = [
+	let quickLinks = $state([
 		{ title: 'GitHub Repository', icon: Code, href: 'https://github.com', external: true },
 		{ title: 'Changelog', icon: FileText, href: '/changelog', external: false },
 		{ title: 'Community', icon: Globe, href: '/community', external: false }
-	];
+	]);
 </script>
 
 <svelte:head>
@@ -88,7 +88,7 @@
 					<Book size={24} class="text-[var(--color-base)]" />
 				</div>
 				<div>
-					<h1 class="text-4xl font-bold text-[var(--color-text)] tracking-tight">Documentation</h1>
+					<h1 class="text-4xl h1 font-bold text-[var(--color-text)] tracking-wider">Documentation</h1>
 					<p class="text-[var(--color-subtext0)] text-lg">
 						Everything you need to build, deploy, and scale
 					</p>
@@ -136,7 +136,7 @@
 						<div
 							class="w-10 h-10 rounded-lg flex items-center justify-center border section-icon-bg"
 						>
-							<svelte:component this={section.icon} size={20} class="section-icon" />
+							{@render section.icon({ size: 20, class: "section-icon" })}
 						</div>
 						<h2 class="text-2xl font-bold text-[var(--color-text)] transition-colors section-title">
 							{section.title}
@@ -198,11 +198,10 @@
 						target={link.external ? '_blank' : '_self'}
 						rel={link.external ? 'noopener noreferrer' : ''}
 					>
-						<svelte:component
-							this={link.icon}
-							size={16}
-							class="text-[var(--color-subtext1)] group-hover:text-[var(--color-blue)] transition-colors"
-						/>
+						{@render link.icon({
+							size: 16,
+							class: "text-[var(--color-subtext1)] group-hover:text-[var(--color-blue)] transition-colors"
+						})}
 						<span class="font-medium">{link.title}</span>
 						{#if link.external}
 							<ExternalLink
@@ -225,9 +224,9 @@
 				<div class="pb-4 border-b border-[var(--color-surface2)]/30 last:border-b-0 last:pb-0">
 					<div class="flex items-center justify-between">
 						<div>
-							<h4 class="font-medium text-[var(--color-text)] text-sm">API v2.1 Released</h4>
+							<h4 class="font-medium text-[var(--color-text)] text-sm">being.software</h4>
 							<p class="text-xs text-[var(--color-subtext0)] mt-1">
-								New endpoints and improved performance
+								New online portal launched
 							</p>
 						</div>
 						<span
@@ -240,9 +239,9 @@
 				<div class="pb-4 border-b border-[var(--color-surface2)]/30 last:border-b-0 last:pb-0">
 					<div class="flex items-center justify-between">
 						<div>
-							<h4 class="font-medium text-[var(--color-text)] text-sm">Security Guide Updated</h4>
+							<h4 class="font-medium text-[var(--color-text)] text-sm">Security Updated</h4>
 							<p class="text-xs text-[var(--color-subtext0)] mt-1">
-								Enhanced encryption documentation
+								Enhanced encryption of passwords and sensitive data
 							</p>
 						</div>
 						<span
@@ -255,9 +254,10 @@
 				<div class="pb-4 border-b border-[var(--color-surface2)]/30 last:border-b-0 last:pb-0">
 					<div class="flex items-center justify-between">
 						<div>
-							<h4 class="font-medium text-[var(--color-text)] text-sm">SDK Examples Added</h4>
+							<h4 class="font-medium text-[var(--color-text)] text-sm">Deploy Forms</h4>
 							<p class="text-xs text-[var(--color-subtext0)] mt-1">
-								Code samples for popular frameworks
+								Added new deployment <br />
+								forms for easier app setup
 							</p>
 						</div>
 						<span
@@ -276,7 +276,7 @@
 		>
 			<h3 class="text-lg font-bold text-[var(--color-text)] mb-4">Need Help?</h3>
 			<p class="text-sm text-[var(--color-subtext0)] mb-4">
-				Can't find what you're looking for? We're here to help.
+				Can't find what you're looking for?
 			</p>
 			<div class="space-y-2">
 				<a
@@ -284,7 +284,7 @@
 					class="flex items-center gap-2 text-sm text-[var(--color-blue)] hover:text-[var(--color-lavender)] transition-colors"
 				>
 					<LifeBuoy size={16} />
-					Contact Support
+					Reach out on Discord/Slack
 				</a>
 				<a
 					href="/community"
@@ -329,6 +329,12 @@
 </div>
 
 <style>
+	.h1 {
+		font-family: 'DotGothic16', sans-serif;
+		font-weight: 900;
+	}
+
+
 	.shine-button::before {
 		content: '';
 		position: absolute;
