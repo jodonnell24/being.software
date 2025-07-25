@@ -1,5 +1,4 @@
 <script>
-	import { onMount, onDestroy } from 'svelte';
 	import { errorHandler } from '$lib/errorHandler.js';
 	import Alert from './Alert.svelte';
 	import { theme } from '$lib/theme.js';
@@ -11,7 +10,6 @@
 	} = $props();
 
 	let errors = $state([]);
-	let unsubscribe;
 
 	const positionClasses = {
 		'top-right': 'fixed top-4 right-4 z-50',
@@ -21,16 +19,16 @@
 		'top-center': 'fixed top-4 left-1/2 transform -translate-x-1/2 z-50'
 	};
 
-	onMount(() => {
-		unsubscribe = errorHandler.subscribe((newErrors) => {
+	$effect(() => {
+		const unsubscribe = errorHandler.subscribe((newErrors) => {
 			errors = newErrors.slice(0, maxErrors);
 		});
-	});
 
-	onDestroy(() => {
-		if (unsubscribe) {
-			unsubscribe();
-		}
+		return () => {
+			if (unsubscribe) {
+				unsubscribe();
+			}
+		};
 	});
 
 	function dismissError(errorId) {

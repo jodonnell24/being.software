@@ -1,12 +1,11 @@
 <script>
-	import { onMount } from 'svelte';
 	import { applications } from '$lib/stores.js';
 	import Card from '$lib/components/Card.svelte';
 
 	// Ensure applications are loaded
 	let appsLoaded = $state(false);
 
-	onMount(() => {
+	$effect(() => {
 		// Wait for next tick to ensure store is properly initialized
 		setTimeout(() => {
 			appsLoaded = true;
