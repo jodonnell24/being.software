@@ -1,0 +1,219 @@
+# ====================
+# NODE.JS / FRONTEND
+# ====================
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+pnpm-lock.yaml
+.pnpm-debug.log*
+
+# SvelteKit specific
+.svelte-kit/
+build/
+.output/
+
+# Build outputs and deployment
+dist/
+public/build/
+.vercel/
+.netlify/
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# Tailwind CSS
+# (generated files are typically in build/ or dist/ already)
+
+# Package managers
+.yarn/
+.pnp.*
+.yarn-integrity
+jspm_packages/
+
+# ====================
+# GO BACKEND
+# ====================
+
+# Go binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Go test binaries
+*.test
+
+# Go coverage output
+*.out
+coverage.txt
+
+# Go workspace file
+go.work
+go.work.sum
+
+# Vendor directory (if using vendoring)
+vendor/
+
+# Go build cache
+.cache/
+
+# Air live reload tool
+tmp/
+.air.toml
+
+# Project-specific Go binaries
+go-back/main
+go-back/app
+/main
+/app
+
+# ====================
+# DEVELOPMENT TOOLS
+# ====================
+
+# Environment variables
+.env
+.env.*
+!.env.example
+.envrc
+
+# Logs
+logs/
+*.log
+
+# Testing and coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Linting and formatting
+.eslintcache
+.stylelintcache
+
+# IDE and editors
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+.history/
+
+# ====================
+# SYSTEM FILES
+# ====================
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# ====================
+# SECURITY & SECRETS
+# ====================
+
+# Certificates and keys
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+*.der
+*.csr
+
+# Configuration files with secrets
+config.json
+config.yaml
+config.yml
+secrets.json
+credentials.json
+.secrets/
+
+# ====================
+# DATABASE
+# ====================
+
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+
+# ====================
+# DOCKER & DEPLOYMENT
+# ====================
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Deployment artifacts
+deploy-key*
+deployment-config*
+
+# ====================
+# TEMPORARY & BACKUP
+# ====================
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ====================
+# PROJECT SPECIFIC
+# ====================
+
+# Application data
+uploads/
+storage/
+data/
+
+# Local override files
+*.local
+*.local.*
+override.*
+
+# Personal documentation (keep README.md)
+THEMING.md
+SECURITY.md
+ENCRYPTION_GUIDE.md
+HOW_TO_USE_ENCRYPTION.md
+LINTING_GUIDE.md
+*.notes
+*.todo
+NOTES.md
+TODO.md
+DEVELOPMENT.md
+ARCHITECTURE.md
+
