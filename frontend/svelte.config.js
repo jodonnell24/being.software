@@ -16,7 +16,8 @@ const config = {
 			routes: {
 				include: ['/*'],
 				exclude: ['<prerender>']
-			}
+			},
+			fallback: '404.html'
 		}),
 		alias: {
 			$lib: './src/lib'
