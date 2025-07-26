@@ -321,15 +321,15 @@ export const SecurityUtils = {
 	 * @param {number} length - Password length (default: 16)
 	 * @returns {string} Generated password
 	 */
-	generateSecurePassword(length = 16) {
-		const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
+	generateSecurePassword(length = 16) { // Can edit charset to remove uncompatible characters if needed
+		const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+		const randomValues = new Uint32Array(length);
+		window.crypto.getRandomValues(randomValues);
 		let password = '';
-
 		for (let i = 0; i < length; i++) {
-			const randomIndex = Math.floor(Math.random() * charset.length);
+			const randomIndex = randomValues[i] % charset.length;
 			password += charset[randomIndex];
 		}
-
 		return password;
 	},
 
@@ -339,14 +339,14 @@ export const SecurityUtils = {
 	 * @returns {string} Generated token
 	 */
 	generateSecureToken(length = 32) {
-		const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+		const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+		const randomValues = new Uint32Array(length);
+		window.crypto.getRandomValues(randomValues);
 		let token = '';
-
 		for (let i = 0; i < length; i++) {
-			const randomIndex = Math.floor(Math.random() * charset.length);
+			const randomIndex = randomValues[i] % charset.length;
 			token += charset[randomIndex];
 		}
-
 		return token;
 	},
 
