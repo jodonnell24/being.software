@@ -43,7 +43,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/my-platform-ui.git"
+    "url": "git+https://github.com/jodonnell24/being.software.git"
   },
   "keywords": [
     "kubernetes",

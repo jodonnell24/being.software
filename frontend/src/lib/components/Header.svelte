@@ -44,7 +44,7 @@
 
 	<div class="flex items-center gap-4">
 		<a
-			href="https://github.com/your-username/your-repo"
+			href="https://github.com/jodonnell24/being.software"
 			target="_blank"
 			rel="noopener noreferrer"
 			class="text-[var(--color-subtext0)] hover:text-[var(--color-blue)] transition-all duration-300 p-2 rounded-lg bg-[var(--color-surface0)]/50 border border-[var(--color-surface1)] hover:bg-[var(--color-surface1)]/50 group focus-ring"
